@@ -1,0 +1,24 @@
+<style>
+  .message-sent {
+    position: relative;
+    left:80%;
+    background-color: rgb(0, 153, 255);
+    color:white;
+    padding:10px;
+    clear:both;
+    float:left;
+  }
+
+  .message-received {
+    position:relative;
+    background-color:#f1f0f0;
+    padding:10px;
+  }
+</style>
+<li style="list-style-type:none;">
+  <div class="row">
+    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
+      <%= message.body %>
+    </div>
+  </div>
+</li>
