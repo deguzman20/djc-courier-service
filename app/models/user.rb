@@ -33,8 +33,19 @@
 #
 
 class User < ApplicationRecord
+  class << self
+    def current_user=(user)
+      Thread.current[:current_user] = user
+    end
+
+    def current_user
+      Thread.current[:current_user]
+    end
+  end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  attr_accessor :current_user
+
   mount_uploader :image, ImageUploader
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable
   geocoded_by :ip_address, latitude: :lat, longitude: :lon
@@ -43,4 +54,23 @@ class User < ApplicationRecord
   belongs_to :vehicle_type, optional: true
   has_many :messages
   has_many :conversations, foreign_key: :sender_id
+
+  def initialize(current_user)
+    @current_user = current_user
+  end
+
+  def self.update_geolocation_of_specific_user
+    self.update_user(@current_user)
+  end
+
+  def update_user(current_user)
+    @user = self.find(current_user)
+    remote_ip = open('http://whatismyip.akamai.com').read
+    geolocation = Geocoder.search(remote_ip).first.coordinates
+    if geolocation.length >=2
+      @user.latitude = 1234
+      @user.longitude = 5678
+      @user.save
+    end
+  end
 end

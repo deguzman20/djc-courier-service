@@ -23,6 +23,7 @@ gem "jquery-rails"
 gem "carrierwave"
 gem "rails_admin", "~> 2.0"
 gem "geocoder", "~> 1.6", ">= 1.6.1"
+gem "debug_inspector", "~> 0.0.3"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

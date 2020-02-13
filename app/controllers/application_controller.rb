@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-
   protect_from_forgery with: :null_session
+
+  def set_current_user
+    current_user
+  end
+
   def after_sign_in_path_for(resource)
     super(resource)
     update_geolocation(resource)
