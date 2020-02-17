@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_005614) do
     t.string "first_name"
     t.string "last_name"
     t.string "age"
+    t.datetime "birthdate"
     t.string "gender"
     t.string "mobile_number"
     t.string "plate_number"
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_02_12_005614) do
     t.inet "last_sign_in_ip"
     t.float "longitude"
     t.float "latitude"
+    t.boolean "is_login", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

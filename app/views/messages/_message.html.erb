@@ -1,24 +1,11 @@
-<style>
-  .message-sent {
-    position: relative;
-    left:80%;
-    background-color: rgb(0, 153, 255);
-    color:white;
-    padding:10px;
-    clear:both;
-    float:left;
-  }
-
-  .message-received {
-    position:relative;
-    background-color:#f1f0f0;
-    padding:10px;
-  }
-</style>
 <li style="list-style-type:none;">
-  <div class="row">
-    <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
-      <%= message.body %>
+  <%# <div class="row"> %>
+    <div class="<%= user.id == message.user_id ? 'card bg-primary' : 'card bg-light' %> <%  message.body.length >= 75 ?  'w-75':  'w-50'  %>">
+      <div class="card-body p-2">
+        <p class="card-text <%= user.id == message.user_id ? 'text-white' : 'black-text' %>">
+          <%= message.body %>
+        </p>
+      </div>
     </div>
-  </div>
+  <%# </div> %>
 </li>

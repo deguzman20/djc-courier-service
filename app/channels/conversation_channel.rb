@@ -9,7 +9,7 @@ class ConversationChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message_params = data['message'].each_with_object({}) do |el, hash|
+    message_params = data["message"].each_with_object({}) do |el, hash|
       hash[el.values.first] = el.values.last
     end
 

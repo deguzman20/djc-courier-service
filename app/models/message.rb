@@ -18,11 +18,11 @@
 #
 #  fk_rails_...  (conversation_id => conversations.id)
 #  fk_rails_...  (user_id => users.id)
-#
-
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :conversation
 
   after_create_commit { MessageBroadcastJob.perform_later(self) }
+
+  validates_presence_of :body
 end

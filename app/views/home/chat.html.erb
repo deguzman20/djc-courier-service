@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="container">
+    <div class="col-md-4">
+      <div class="chat-room">
+        <div class="card-body">
+          <div class="row px-lg-12 px-2">
+            <div class="col-md-12 ">
+              <h1 class="font-weight-bold mb-3 text-center text-lg-left">Employee List</h1>
+              <div class="white z-depth-1 px-2 pt-3 pb-0 members-panel-1 scrollbar-light-blue">
+                <ul class="list-unstyled friend-list">
+                  <% @users.each do |user| %>
+                    <li class="p-2">
+                      <%= link_to conversations_path(user_id: user), remote: true, method: :post, class: "d-flex justify-content-between" do %>
+                      <%= image_tag user.try(:image).to_s, class: "avatar rounded-circle d-flex align-self-center mr-2 z-depth-1", width:50, height:50 %>
+                        <div class="text-small">
+                          <strong><%= user.try(:first_name) %> <%= user.try(:last_name)%></strong>
+                          <p class="last-message text-muted">
+                          </p>
+                        </div>
+                        <div class="chat-footer">
+                          <%= user.is_login ? "online": "offline" %>
+                          <%# <p class="text-smaller text-muted mb-0">Just now</p>
+                          <span class="badge badge-danger float-right">1</span> %>
+                        </div>
+                      <% end %>
+                    </li>
+                    <hr/>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <br/><br/><br/><br/>
+      <ul id="conversations-list" type="none">
+        <% @conversations.each do |conversation| %>
+          <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+        <% end %>
+      </ul>
+  </div>
+  </div>
+</div>

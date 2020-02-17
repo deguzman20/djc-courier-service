@@ -1,17 +1,43 @@
+# Home Controller
 class HomeController < ApplicationController
-  def index
+  def chat
     session[:conversations] ||= []
 
     @users = User.all.where.not(id: current_user)
     @conversations = Conversation.includes(:recipient, :messages)
-                                 .find(session[:conversations])
+                                  .find(session[:conversations])
   end
 
-  def map ;end
+  def map; end
 
   def map_coordinates
-    coordinates = User.all
+    coordinates = User.where(is_login: true)
 
     render json: coordinates
+  end
+
+  def my_coordinate
+    return unless user_signed_in?
+
+    user = User.find(current_user.id)
+
+    render json: { latitude: user.latitude,
+                    longitude: user.longitude }
+  end
+
+  def update_geolocation
+    return unless user_signed_in?
+
+    user = User.find(current_user.id)
+    # Get Public Ip address
+    remote_ip = open("http://whatismyip.akamai.com").read
+    geolocation = Geocoder.search(remote_ip).first.coordinates
+
+    return unless geolocation.length >= 2
+
+    user.latitude = geolocation[0]
+    user.longitude = geolocation[1]
+    user.save
+    render json: { long: user.longitude, lat: user.latitude }
   end
 end

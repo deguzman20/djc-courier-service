@@ -1,8 +1,7 @@
-<br/>
 <li>
   <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
-    <div class="panel-heading">
-      <%= link_to conversation.opposed_user(user).email, '', class: 'toggle-window' %>
+    <div class="panel-heading bg-dark">
+      <%= link_to conversation.opposed_user(user).first_name , '', class: 'toggle-window text-white' %>
       <%= link_to "x", close_conversation_path(conversation), class: "btn btn-default btn-xs pull-right", remote: true, method: :post %>
     </div>
 
@@ -12,12 +11,21 @@
           <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
         </ul>
       </div>
+      <br/>
       <form class="new_message">
         <input name="conversation_id" type="hidden" value="<%= conversation.id %>">
         <input name="user_id" type="hidden" value="<%= user.id %>">
-        <textarea name="body" class="form-control"></textarea>
+        <div class="md-form input-group mb-3">
+          <input type="text" name="body" class="form-control" placeholder="Enter message..." aria-label="Example text with two button addons"
+            aria-describedby="MaterialButton-addon3">
+          <div class="input-group-prepend" id="MaterialButton-addon3">
+            <input type="submit" class="btn btn-md btn-dark m-0 px-3" value="Send">
+            <%# <button class="btn btn-md btn-info m-0 px-3" type="button">Button</button> %>
+          </div>
+        </div>
+        <%# <textarea name="body" class="form-control"></textarea>
         <br/>
-        <input type="submit" class="btn btn-success" value="Send">
+        <input type="submit" class="btn btn-success" value="Send"> %>
       </form>
     </div>
   </div>

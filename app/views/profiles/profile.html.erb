@@ -1,0 +1,149 @@
+<%#= stylesheet_link_tag "chat.css" %>
+<div class="container-fluid">
+  <main>
+    <div id="profile-upper">
+        <div id="profile-banner-image">
+            <img src="https://imagizer.imageshack.com/img921/9628/VIaL8H.jpg" alt="Banner image">
+        </div>
+        <div id="profile-d">
+            <div id="profile-pic">
+                <%= image_tag @profile.image.to_s %>
+            </div>
+            <div id="u-name"><%= @profile.try(:first_name)%> <%= @profile.try(:last_name) %></div>
+            <%# <div class="tb" id="m-btns">
+                <div class="td">
+                    <div class="m-btn"><i class="material-icons">format_list_bulleted</i><span>Activity log</span></div>
+                </div>
+                <div class="td">
+                    <div class="m-btn"><i class="material-icons">lock</i><span>Privacy</span></div>
+                </div>
+            </div> %>
+            <%# <div id="edit-profile"><i class="material-icons">camera_alt</i></div> %>
+        </div>
+        <div id="black-grd"></div>
+    </div>
+    <div id="main-content">
+        <div class="tb">
+            <div class="td" id="l-col">
+                <div class="l-cnt">
+                    <div class="cnt-label">
+                        <i class="l-i" id="l-i-i"></i>
+                        <span>Intro</span>
+                        <div class="lb-action"><i class="material-icons">edit</i></div>
+                    </div>
+                    <div id="i-box">
+                        <div id="intro-line">Driver at DJC COURIER SERVICE</div>
+                        <div id="u-occ">Delivering packages at <a href="#">DJC COURIER SERVICE</a></div>
+                        <div id="u-loc"><i class="material-icons">location_on</i><a href="#"></a>, <a href="#">Phillippines</a></div>
+                    </div>
+                </div>
+                <%# <div class="l-cnt l-mrg">
+                    <div class="cnt-label">
+                        <i class="l-i" id="l-i-p"></i>
+                        <span>Photos</span>
+                        <div class="lb-action" id="b-i"><i class="material-icons"></i></div>
+                    </div>
+                    <div id="photos">
+                        <div class="tb">
+                            <div class="tr">
+                                <div class="td"></div>
+                                <div class="td"></div>
+                                <div class="td"></div>
+                            </div>
+                            <div class="tr">
+                                <div class="td"></div>
+                                <div class="td"></div>
+                                <div class="td"></div>
+                            </div>
+                            <div class="tr">
+                                <div class="td"></div>
+                                <div class="td"></div>
+                                <div class="td"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> %>
+                <%# <div class="l-cnt l-mrg" >
+                    <div class="cnt-label">
+                        <i class="l-i" id="l-i-k"></i>
+                        <span>Did You Know<i id="k-nm">1</i></span>
+                    </div>
+                    <div>
+                        <div class="q-ad-c">
+                            <a href="#" class="q-ad">
+                                <img src="https://imagizer.imageshack.com/img923/1849/4TnLy1.png">
+                                <span>My favorite superhero is...</span>
+                            </a>
+                        </div>
+                        <div class="q-ad-c">
+                            <a href="#" class="q-ad" id="add_q">
+                                <i class="material-icons">add</i>
+                                <span>Add Answer</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="t-box">
+                    <a href="#">Privacy</a> <a href="#">Terms</a> <a href="#">Advertising</a> <a href="#">Ad Choices</a> <a href="#">Cookies</a> <span id="t-more">More<i class="material-icons">arrow_drop_down</i></span>
+                    <div id="cpy-nt">Facebook &copy; <span id="curr-year"></span></div>
+                </div> %>
+            </div>
+            <div class="td" id="m-col">
+              <div>
+                <form id="profile_form">
+                  <div class="post">
+                    <div class="container">
+                      <div class="col-md-6">
+                        <label>Firstname</label>
+                        <input type="text" name="first_name" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:first_name) %>" />
+                      </div>
+                      <div class="col-md-6">
+                        <label>Lastname</label>
+                        <input type="text" name="last_name" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:last_name) %>" />
+                      </div>
+                      <div class="col-md-6">
+                        <br/>
+                        <label>Age</label>
+                        <input type="text" name="age" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:age) %>" />
+                      </div>
+                      <div class="col-md-6">
+                        <br/>
+                        <label>Mobile Number</label>
+                        <input type="text" name="mobile_number" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:mobile_number) %>" />
+                      </div>
+                      <div class="col-md-6">
+                        <br/>
+                        <label>Plate Number</label>
+                        <input type="text" name="plate_number" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:plate_number) %>" />
+                      </div>
+                      <div class="col-md-6">
+                        <br/>
+                        <label>Email Address</label>
+                        <input type="text" name="email_address" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:email) %>" />
+                      </div>
+                      <div class="col-md-6" style="display:none">
+                        <br/>
+                        <label>Email Address</label>
+                        <input type="text" name="id" class="form-control <%= @is_disabled %>" value="<%= @profile.try(:id) %>" />
+                      </div>
+                      <div class="col-md-6">
+                        <br/>
+                        <label>Gender</label>
+                        <%= select_tag 'gender', options_for_select(User.genders), class: "form-control #{ @is_disabled }" %>
+                      </div>
+                      <div class="col-md-12">
+                        <br/>
+                        <button class="btn btn-dark">submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+  </main>
+  <br/><br/>
+</div>
+<%= javascript_include_tag "profile.js" %>

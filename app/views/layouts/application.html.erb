@@ -6,12 +6,23 @@
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <%= stylesheet_link_tag "https://use.fontawesome.com/releases/v5.8.1/css/all.css" %>
+    <!-- Bootstrap core CSS -->
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" %>
+    <!-- Material Design Bootstrap -->
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'chat.css' %>
   </head>
 
   <body>
+    <%= render 'shared/nav' %>
     <%= yield %>
+    <%= javascript_include_tag 'update_geolocation.js' %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" %>
+    <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js" %>
   </body>
 </html>

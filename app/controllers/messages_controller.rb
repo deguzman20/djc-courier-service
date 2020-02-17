@@ -1,3 +1,4 @@
+# Message Controller
 class MessagesController < ApplicationController
   def create
     @conversation = Conversation.includes(:recipient).find(params[:conversation_id])
@@ -10,7 +11,7 @@ class MessagesController < ApplicationController
 
   private
 
-  def message_params
-    params.require(:message).permit(:user_id, :body)
-  end
+    def message_params
+      params.require(:message).permit(:user_id, :body)
+    end
 end

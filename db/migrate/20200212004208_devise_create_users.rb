@@ -4,8 +4,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
       t.string :image
 
       ## Recoverable
@@ -18,6 +18,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name
       t.string :last_name
       t.string :age
+      t.datetime :birthdate
       t.string :gender
       t.string :mobile_number
       t.string :plate_number
@@ -34,6 +35,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.float :longitude
       t.float :latitude
 
+      ## Check if user currently online or not
+      t.boolean :is_login, default: false
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -44,7 +48,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
-
 
       t.timestamps null: false
     end
