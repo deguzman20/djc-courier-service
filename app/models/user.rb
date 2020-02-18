@@ -35,7 +35,8 @@
 #
 class User < ApplicationRecord
   mount_uploader :image, ImageUploader
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :trackable
+  devise :database_authenticatable, :registerable, :recoverable, 
+        :rememberable, :validatable, :trackable
   geocoded_by :ip_address, latitude: :lat, longitude: :lon
   # after_validation :geocode
 
@@ -46,4 +47,22 @@ class User < ApplicationRecord
   has_many :conversations, foreign_key: :sender_id
 
   validates_presence_of :first_name, :last_name, :email, :birthdate, :gender, :mobile_number, :plate_number, :password, on: [:create]
+  # def self.current_user=(current_user)
+  #   @current_user = current_user
+  # end
+
+  # def self.current_user
+  #   @current_user
+  # end
+
+  # def self.update_geolocation_of_specific_user(current_user)
+  #   user = self.find(current_user)
+
+  #   remote_ip = open('http://whatismyip.akamai.com').read
+  #   geolocation = Geocoder.search(remote_ip).first.coordinates
+  #   return unless geolocation.length >=2
+  #     user.latitude = 1234
+  #     user.longitude = 5678
+  #     user.save
+  # end
 end
