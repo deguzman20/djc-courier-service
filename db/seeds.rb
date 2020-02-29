@@ -9,8 +9,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 images = [
+  Rails.root + 'app/assets/images/profile_images/Kathryn-Bernardo.jpg',
+  Rails.root + 'app/assets/images/profile_images/gabbi.jpg',
+  Rails.root + 'app/assets/images/profile_images/liza_soberano.jpeg',
+  Rails.root + 'app/assets/images/profile_images/yam_concepcion.jpg',
   Rails.root + 'app/assets/images/profile_images/connie.jpg',
-  Rails.root + 'app/assets/images/profile_images/lexi_lore.jpeg'
 ]
 
 password = 'pass12345'
@@ -18,7 +21,7 @@ password = 'pass12345'
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    image: File.open(images[rand(0..1)]),
+    image: File.open(images[rand(0..4)]),
     email: "user-#{i}@example.com",
     password: password,
     password_confirmation: password,

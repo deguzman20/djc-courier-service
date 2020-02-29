@@ -22,7 +22,11 @@ class HomeController < ApplicationController
     user = User.find(current_user.id)
 
     render json: { latitude: user.latitude,
-                    longitude: user.longitude }
+                    longitude: user.longitude,
+                    first_name: user.first_name,
+                    last_name: user.last_name,
+                    image: user.image.to_s,
+                    id: user.id  }
   end
 
   def update_geolocation

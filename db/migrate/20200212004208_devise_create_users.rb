@@ -37,6 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       ## Check if user currently online or not
       t.boolean :is_login, default: false
+      t.boolean :approved, default: false
 
       ## Confirmable
       # t.string   :confirmation_token

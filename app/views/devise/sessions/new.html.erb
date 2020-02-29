@@ -1,0 +1,42 @@
+<br/><br/><br/><br/><br/><br/><br/>
+<div class="container">
+  <div class="col-lg-4 col-md-4">
+  </div>
+  <div class="col-lg-4 col-md-4">
+    <!-- Material form subscription -->
+    <div class="card">
+
+        <h5 class="card-header purple-color white-text text-center py-4">
+            <strong>Login</strong>
+        </h5>
+
+        <!--Card content-->
+        <div class="card-body px-lg-5">
+
+            <!-- Form -->
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class:"text-center", style: "color:#757575" }) do |f| %>
+                <!-- Name -->
+                <div class="md-form mt-3">
+                  <%= f.email_field :email, id:"materialFormEmail", class: "form-control" %>
+                  <%= f.label :email, for:"materialFormEmail" %><br />
+                </div>
+
+                <!-- E-mai -->
+                <div class="md-form">
+                  <%= f.password_field :password, id:"materialFormPassword", class: "form-control" %>
+                  <%= f.label :password, for:"materialFormPassword" %><br />
+                </div>
+
+                <!-- Sign in button -->
+                <button class="btn btn-outline-dark btn-rounded btn-block z-depth-0 my-4 waves-effect" type="submit">Sign in</button>
+            <% end %>
+            <!-- Form -->
+
+        </div>
+
+    </div>
+    <!-- Material form subscription -->
+  </div>
+  <div class="col-lg-4 col-md-4">
+  </div>
+</div>

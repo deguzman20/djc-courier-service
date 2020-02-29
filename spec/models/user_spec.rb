@@ -4,6 +4,7 @@
 #
 #  id                     :bigint           not null, primary key
 #  age                    :string
+#  approved               :boolean          default(FALSE)
 #  birthdate              :datetime
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet

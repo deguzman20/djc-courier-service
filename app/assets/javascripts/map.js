@@ -14,7 +14,8 @@ function initMap(){
         dataType:"JSON",
         success:function(data){
           $.each(data, function(k,v){
-            locations.push([ v["first_name"]+" "+v["last_name"], v["latitude"], v["longitude"]]);
+            locations.push([ v["first_name"]+" "+v["last_name"], v["latitude"], v["longitude"], v["image"], v["id"]]);
+            console.log(locations)
             var mapOptions = {
                     zoom: 13,
                     center: location,
@@ -199,12 +200,26 @@ function initMap(){
                   map: map,
                   animation: google.maps.Animation.DROP
               });
-
               marker.addListener('click', toggleBounce);
-
+              var contentString  = '<div id="container-fluid">';
+                  contentString +=   '<main>';
+                  contentString +=     '<div id="profile-banner-image">';
+                  contentString +=       '<img src="https://imagizer.imageshack.com/img921/9628/VIaL8H.jpg" alt="Banner image">';
+                  contentString +=     '</div>';
+                  contentString +=      '<div id="profile-d">';
+                  contentString +=        '<div id="profile-pic" style="position:relative;top:-55px">';
+                  contentString +=          '<img src="'+locations[i][3]["url"]+'"/>';
+                  contentString +=        '</div>';
+                  contentString +=        '<div id="u-name">';
+                  contentString +=          locations[i][0]+' '+'<button class="btn elegant-color"><a href="/profile/'+locations[i][4]+'" class="white-text">View Profile</a></button>';
+                  contentString +=        '</div>';
+                  contentString +=      '</div>';
+                  contentString +=   '</main>';
+                  contentString += '</div>';
               google.maps.event.addListener(marker, 'click', (function(marker, i) {
                   return function() {
-                    infowindow.setContent(locations[i][0]);
+                    // locations[i][0]
+                    infowindow.setContent(contentString);
                     infowindow.open(map, marker);
                   }
                   })(marker, i));

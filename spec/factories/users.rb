@@ -4,6 +4,7 @@
 #
 #  id                     :bigint           not null, primary key
 #  age                    :string
+#  approved               :boolean          default(FALSE)
 #  birthdate              :datetime
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
@@ -47,6 +48,12 @@ FactoryBot.define do
     password { "deguzman123" }
     association :vehicle_type, factory: :type_of_vehicle,
                 strategy: :build
+
+    # trait :user_messages do |user, evaluator|
+    #   transient do
+    #     user_messages_count { 6 }
+    #   end
+    # end
   end
 
   factory :type_of_vehicle, class: "VehicleType" do
