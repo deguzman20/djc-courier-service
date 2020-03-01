@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe ConversationsController, type: :controller do
-  let(:conversations_controller) {  ConversationsController.new  }
+  let(:conversations_controller) { described_class.new }
 
   describe "GET #create" do
     it "check instance variable for coversation if it's equal to conversation let variable" do

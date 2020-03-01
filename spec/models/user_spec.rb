@@ -98,8 +98,8 @@ RSpec.describe User, type: :model do
   end
 
   describe "Associations" do
-    it { should have_many(:messages) }
-    it { should have_many(:conversations) }
-    it { should belong_to(:vehicle_type) }
+    it { is_expected.to have_many(:messages) }
+    it { is_expected.to have_many(:conversations) }
+    it { is_expected.to belong_to(:vehicle_type) }
   end
 end

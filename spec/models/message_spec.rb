@@ -23,7 +23,6 @@
 require "rails_helper"
 
 RSpec.describe Message, type: :model do
-
   context "when field's are nil" do
     let(:message) { build(:message) }
 
@@ -82,7 +81,7 @@ RSpec.describe Message, type: :model do
   # end
 
   describe "Association" do
-    it { should belong_to(:user).class_name('User') }
-    it { should belong_to(:conversation) }
+    it { is_expected.to belong_to(:user).class_name("User") }
+    it { is_expected.to belong_to(:conversation) }
   end
 end

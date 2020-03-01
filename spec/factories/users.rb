@@ -43,12 +43,12 @@ FactoryBot.define do
     last_name { Faker::Name.last_name }
     sequence(:email) { |n| "user-#{n}@example.com" }
     birthdate { DateTime.now }
-    gender { ["male", "female"].sample }
+    gender { %w[male female].sample }
     mobile_number { "09495939582" }
     plate_number { "ABC-1234" }
     password { "deguzman123" }
     association :vehicle_type, factory: :type_of_vehicle,
-                strategy: :build
+                               strategy: :build
 
     # trait :user_messages do |user, evaluator|
     #   transient do

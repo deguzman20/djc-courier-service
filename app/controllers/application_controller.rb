@@ -6,18 +6,18 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     super(resource)
     #update_geolocation(resource)
-    user = User.find(resource.id)
-    if user.present?
-      if user.approved?
-        user.is_login = true
-        user.save   
+    @user = User.find(resource.id)
+    if @user.present?
+      # if @user.approved?
+        @user.is_login = true
+        @user.save   
         stored_location_for(resource) || root_path
-      else
-        flash[:notice] = "Your account has not approve"
-        redirect_to new_user_session_path
-      end
+      # else
+      #   flash[:notice] = "Your account has not approve"
+      #   redirect_to new_user_session_path          
+      # end
     else
-      flash[:error] = "Incorrent email and password"
+      flash[:error] = "Incorrect email and password"
       redirect_to new_user_session_path
     end
   end
