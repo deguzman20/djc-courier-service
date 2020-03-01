@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def chat
     session[:conversations] ||= []
 
-    @users = User.all.where.not(id: current_user)
+    @users = User.all.where.not(id: current_user).where(approved: true)
     @conversations = Conversation.includes(:recipient, :messages)
                                   .find(session[:conversations])
   end
@@ -39,8 +39,8 @@ class HomeController < ApplicationController
 
     return unless geolocation.length >= 2
 
-    user.latitude = geolocation[0]
-    user.longitude = geolocation[1]
+    user.latitude = params[:latitude]
+    user.longitude = params[:longitude]
     user.save
     render json: { long: user.longitude, lat: user.latitude }
   end

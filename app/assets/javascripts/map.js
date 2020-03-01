@@ -1,5 +1,5 @@
 function initMap(){
-    var locations = [];
+    var locations = [];   
 
     $.ajax({
       url: "/my_coordinate",

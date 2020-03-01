@@ -3,8 +3,9 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  admin                  :boolean          default("false")
 #  age                    :string
-#  approved               :boolean          default(FALSE)
+#  approved               :boolean          default("false")
 #  birthdate              :datetime
 #  current_sign_in_at     :datetime
 #  current_sign_in_ip     :inet
@@ -13,7 +14,7 @@
 #  first_name             :string
 #  gender                 :string
 #  image                  :string
-#  is_login               :boolean          default(FALSE)
+#  is_login               :boolean          default("false")
 #  last_name              :string
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :inet
@@ -24,7 +25,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  sign_in_count          :integer          default(0), not null
+#  sign_in_count          :integer          default("0"), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  vehicle_type_id        :integer

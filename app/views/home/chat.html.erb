@@ -18,7 +18,7 @@
                           </p>
                         </div>
                         <div class="chat-footer">
-                          <%= user.is_login ? "online": "offline" %>
+                          <%= user.is_login ?  "<div style='background:rgb(66, 183, 42);width:10px;height:10px;border-radius:10px;color:rgb(66, 183, 42)'>`</div>".html_safe : "<div style='background:rgb(66, 183, 42);width:10px;height:10px;border-radius:10px;color:rgb(66, 183, 42)'>`</div>".html_safe %>
                           <%# <p class="text-smaller text-muted mb-0">Just now</p>
                           <span class="badge badge-danger float-right">1</span> %>
                         </div>

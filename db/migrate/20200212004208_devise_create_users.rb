@@ -39,6 +39,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :is_login, default: false
       t.boolean :approved, default: false
 
+      t.boolean :admin, default: false
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
