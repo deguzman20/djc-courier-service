@@ -5,7 +5,15 @@ RailsAdmin.config do |config|
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
   # end
-  # config.current_user_method(&:current_user)
+  config.current_user_method(&:current_user)
+
+  config.model Message do
+    visible false
+  end
+
+  config.model Conversation do
+    visible false
+  end
 
   ## == CancanCan ==
   # config.authorize_with :cancancan
@@ -21,6 +29,8 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
+
+  config.current_user_method(&:current_user)
 
   config.actions do
     dashboard                     # mandatory

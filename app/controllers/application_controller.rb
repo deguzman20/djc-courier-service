@@ -14,25 +14,29 @@ class ApplicationController < ActionController::Base
         stored_location_for(resource) || root_path
       # else
       #   flash[:notice] = "Your account has not approve"
-      #   redirect_to new_user_session_path          
+      #   redirect_to new_user_session_path
       # end
-    else
-      flash[:error] = "Incorrect email and password"
-      redirect_to new_user_session_path
+    # else
+    #   flash[:error] = "Incorrect email and password"
+    #   redirect_to new_user_session_path
     end
   end
 
+  def after_sign_out_path_for(_resource_or_scope)
+    new_user_session_path
+  end
+
   def update_geolocation(resource)
-    user = User.find(resource.id)
+    # user = User.find(resource.id)
 
     # Get Public Ip address
-    remote_ip = open("http://whatismyip.akamai.com").read
-    geolocation = Geocoder.search(remote_ip).first.coordinates
-    return unless geolocation.length >= 2
+    # remote_ip = open("http://whatismyip.akamai.com").read
+    # geolocation = Geocoder.search(remote_ip).first.coordinates
+    # return unless geolocation.length >= 2
 
-    user.latitude = geolocation[0]
-    user.longitude = geolocation[1]
-    user.is_login = true
-    user.save
+    # user.latitude = geolocation[0]
+    # user.longitude = geolocation[1]
+    # user.is_login = true
+    # user.save
   end
 end

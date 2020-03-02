@@ -48,5 +48,5 @@ class User < ApplicationRecord
   has_many :messages
   has_many :conversations, foreign_key: :sender_id
 
-  # validates_presence_of :first_name, :last_name, :email, :birthdate, :gender, :mobile_number, :plate_number, :password, on: [:create]
+  validates_presence_of :first_name, :last_name, :email, :birthdate, :gender, :mobile_number, :plate_number, :password, on: [:create]
 end

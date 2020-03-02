@@ -28,3 +28,10 @@ password = 'pass12345'
     gender: %w[male female].sample
   )
 end
+
+User.create(first_name: "admin",
+            last_name: "admin",
+            email: "admin@gmail.com",
+            password:"admin123",
+            password_confirmation:"admin123",
+            admin: true)
