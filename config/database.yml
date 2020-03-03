@@ -66,4 +66,4 @@ production:
   <<: *default
   database: djc_courier_service_fleet_manager_production
   username: djc_courier_service_fleet_manager
-  password: 
+  password:
