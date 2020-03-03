@@ -1,0 +1,1 @@
+setInterval(function(){function o(o){var t=o.coords.longitude,n=o.coords.latitude;$.ajax({url:"/update_geolocation",type:"GET",data:{latitude:n,longitude:t},dataType:"JSON",success:function(o){console.log(o)},error:function(o){console.log(o)}})}navigator.geolocation&&navigator.geolocation.getCurrentPosition(o)},5e3);

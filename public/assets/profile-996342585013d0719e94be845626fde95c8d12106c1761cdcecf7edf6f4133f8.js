@@ -1,0 +1,1 @@
+$(function(){$(".different_user").attr("disabled","disabled"),$("#profile_form").submit(function(e){e.preventDefault();var o=$(this).serialize();$.ajax({url:"/update_profile_info",type:"GET",data:o,dataType:"JSON",success:function(e){console.log(e)},error:function(e){console.log(e)}})})});
