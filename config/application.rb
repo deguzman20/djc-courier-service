@@ -12,7 +12,7 @@ module DjcCourierServiceFleetManager
     config.load_defaults 5.2
     config.autoload_paths << Rails.root.join("lib")
     # config.assets.initialize_on_precompile = false
-    config.action_controller.page_cache_directory = "#{::Rails.root.to_s}/public/cache/"
+    # config.action_controller.page_cache_directory = "#{::Rails.root.to_s}/public/cache/"
     config.generators do |g|
       g.factory_bot true
     end
