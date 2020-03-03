@@ -188,7 +188,7 @@ GEM
       activerecord (>= 4.2)
       request_store (~> 1.1)
     parallel (1.19.1)
-    parser (2.7.0.3)
+    parser (2.7.0.4)
       ast (~> 2.4.0)
     pg (1.2.2)
     power_assert (1.1.6)
@@ -399,6 +399,7 @@ DEPENDENCIES
   rubocop
   rubocop-performance
   rubocop-rspec
+  sass
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda (= 3.5.0)
