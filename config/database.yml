@@ -58,7 +58,7 @@ test:
 #   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
 #
 # You can use this database configuration with:
-#
+#s
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #<%= ENV['DJC_COURIER_SERVICE_FLEET_MANAGER_DATABASE_PASSWORD'] %>
