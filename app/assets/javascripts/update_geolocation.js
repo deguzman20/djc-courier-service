@@ -4,8 +4,8 @@ setInterval(function(){
   }
 
   function displayLocationInfo(position) {
-    const lng = position.coords.longitude;
-    const lat = position.coords.latitude;
+    var lng = position.coords.longitude;
+    var lat = position.coords.latitude;
     $.ajax({
         url: "/update_geolocation",
         type: "GET",
