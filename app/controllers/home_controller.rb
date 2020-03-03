@@ -34,14 +34,8 @@ class HomeController < ApplicationController
     return unless user_signed_in?
 
     user = User.find(current_user.id)
-    # # Get Public Ip address
-    # remote_ip = open("http://whatismyip.akamai.com").read
-    # geolocation = Geocoder.search(remote_ip).first.coordinates
-
-    # return unless geolocation.length >= 2
-
-    user.latitude = geolocation[0]
-    user.longitude = geolocation[1]
+    user.latitude = params[:latitude]
+    user.longitude = params[:longitude]
     user.save
     render json: { long: user.longitude, lat: user.latitude }
   end

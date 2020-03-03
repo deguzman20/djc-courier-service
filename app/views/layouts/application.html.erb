@@ -22,7 +22,9 @@
   <body>
     <%= render 'shared/nav' %>
     <%= yield %>
-    <%= javascript_include_tag 'update_geolocation.js' %>
+    <% if current_user.present? %>
+      <%= javascript_include_tag 'update_geolocation.js' %>
+    <% end %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js" %>
     <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js" %>
   </body>
